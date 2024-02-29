@@ -6,7 +6,7 @@ import { GenericValidator } from './validators/cpfValidator';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 
 export class AppComponent implements OnInit{
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit{
   registerForm: FormGroup;
   finalValues: JSON;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor() {}
 
   ngOnInit(): void {
 

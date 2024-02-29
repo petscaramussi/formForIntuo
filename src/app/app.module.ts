@@ -23,7 +23,6 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     MatButtonModule,
     NgxMaskDirective,
     NgxMaskPipe
-    
   ],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent]

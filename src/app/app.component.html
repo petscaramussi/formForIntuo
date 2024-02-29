@@ -1,50 +1,59 @@
+<div class="content">
+  <div class="container">
+
+    <img class="img-logo" src="../assets/images/logo.svg" alt="Imagem logo">
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-group">
+
+      <mat-form-field appearance="outline" style="margin-bottom: -1.25em">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" formControlName="nome" placeholder="seu nome">
+      </mat-form-field>
+
+      <li class="li-warn" *ngIf="!registerForm.get('nome').valid && registerForm.get('nome').touched" class="li-warn">
+        Por favor, entre um
+        nome valido!</li>
+
+      <mat-form-field appearance="outline" style="margin-bottom: -1.25em">
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput type="text" formControlName="dataNasc" placeholder="00/00/0000" [dropSpecialCharacters]="false"
+          mask="d0/M0/0000">
+      </mat-form-field>
+
+      <li class="li-warn" *ngIf="!registerForm.get('dataNasc').valid && registerForm.get('dataNasc').touched"
+        class="li-warn">Por favor,
+        entre uma data no formato dd/MM/yyyy</li>
 
 
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-group">
 
-  <mat-form-field>
-    <mat-label>Nome</mat-label>
-    <input matInput type="text" formControlName="nome" placeholder="seu nome">
-  </mat-form-field>
-  <span *ngIf="!registerForm.get('nome').valid && registerForm.get('nome').touched" class="info">Por favor, entre um nome valido!</span>
+      <mat-form-field appearance="outline" style="margin-bottom: -1.25em">
+        <mat-label>CPF</mat-label>
+        <input matInput formControlName="cpf" mask="000.000.000-00" placeholder="000.000.000-00">
+      </mat-form-field>
 
-  <br>
+      <li class="li-warn" *ngIf="!registerForm.get('cpf').valid && registerForm.get('cpf').touched" class="li-warn">Por
+        favor, entre com um CPF valido!</li>
 
-  <mat-form-field>
-    <mat-label>Data de Nascimento</mat-label>
-    <input matInput type="text" formControlName="dataNasc" placeholder="00/00/0000" [dropSpecialCharacters]="false" mask="d0/M0/0000">
-  </mat-form-field>
 
-  <span *ngIf="!registerForm.get('dataNasc').valid && registerForm.get('dataNasc').touched" class="info">Por favor, entre uma data no formato dd/MM/yyyy</span>
-  
-  <br>
 
-  <mat-form-field>
-    <mat-label>CPF</mat-label>
-    <input matInput formControlName="cpf" mask="000.000.000-00" placeholder="000.000.000-00">
-  </mat-form-field>
+      <mat-form-field appearance="outline" style="margin-bottom: -1.25em">
+        <mat-label>Endereço</mat-label>
+        <input matInput type="text" formControlName="endereco" placeholder="Rua teste..." [class.valid]="registerForm.get('endereco').valid">
+      </mat-form-field>
 
-  <span *ngIf="!registerForm.get('cpf').valid && registerForm.get('cpf').touched" class="info">Por favor, entre um CPF valido!</span>
+      <li *ngIf="!registerForm.get('endereco').valid && registerForm.get('endereco').touched" class="li-warn">Por favor, entre com um endereço valido!</li>
 
-  <br>
 
-  <mat-form-field>
-    <mat-label>Endereço</mat-label>
-    <input matInput type="text" formControlName="endereco" placeholder="Rua teste...">
-  </mat-form-field>
+      <mat-radio-group name="sexo" formControlName="sexo">
+        <mat-radio-button value="Masculino" name="Masculino" color="primary">Masculino</mat-radio-button>
+        <mat-radio-button value="Feminino" name="Feminino" color="primary">Feminino</mat-radio-button>
+      </mat-radio-group>
 
-  <span *ngIf="!registerForm.get('endereco').valid && registerForm.get('endereco').touched" class="info">Por favor, entre um endereço valido!</span>
 
-  <br>
+      <button mat-flat-button [disabled]="registerForm.invalid" color="primary">Confirmar</button>
+    </form>
+  </div>
 
-  <mat-radio-group name="sexo" formControlName="sexo">
-    <mat-radio-button value="Masculino" name="Masculino" color="primary">Masculino</mat-radio-button>
-    <mat-radio-button value="Feminino" name="Feminino" color="primary">Feminino</mat-radio-button>
-  </mat-radio-group>
+  <p class="result-json">{{finalValues | json}}</p>
 
-  <br>
-
-  <button mat-flat-button [disabled]="registerForm.invalid" color="primary" >Accent</button>
-</form>
-
-<p>{{finalValues | json}}</p>
+</div>
