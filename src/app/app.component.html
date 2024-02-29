@@ -50,10 +50,7 @@
       </mat-radio-group>
 
 
-      <button mat-flat-button [disabled]="registerForm.invalid" color="primary">Confirmar</button>
+      <button mat-flat-button [disabled]="registerForm.invalid" color="primary" (click)="openDialog()">Confirmar</button>
     </form>
   </div>
-
-  <p class="result-json">{{finalValues | json}}</p>
-
 </div>

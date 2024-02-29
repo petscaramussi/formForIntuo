@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateValidator } from './validators/dateValidator';
 import { GenericValidator } from './validators/cpfValidator';
+import { DialogBodyComponent } from './dialog-body/dialog-body.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +14,8 @@ import { GenericValidator } from './validators/cpfValidator';
 export class AppComponent implements OnInit{
 
   registerForm: FormGroup;
-  finalValues: JSON;
 
-  constructor() {}
+  constructor(private matDialog: MatDialog) {}
 
   ngOnInit(): void {
 
@@ -30,7 +31,13 @@ export class AppComponent implements OnInit{
 
   onSubmit() {
     console.log(this.registerForm.value);
-    this.finalValues = this.registerForm.value;
+  }
+
+  openDialog() {
+    this.matDialog.open(DialogBodyComponent,{
+      data: this.registerForm.value,
+      width: '500px',
+    })
   }
 
   
